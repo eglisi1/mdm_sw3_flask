@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <br />
+    <h2>Chuck Norris Joke Creator</h2>
+    <h4>Chuck Norris is a hero. Get a funny Chuck Norris Joke with the Churck Norris Joke Creator ™</h4>
+    <br />
+
+    <form method="post" action="/">
+        <p>Get a funny Chuck Norris Joke!</p>
+        <input type="submit" name="joke_button" value="Get Joke">
+    </form>
+
+    <br />
+    
+    {% if joke %}
+    <p>{{ joke }}</p>
+    {%endif %}
+
+</div>
+{% endblock %}
