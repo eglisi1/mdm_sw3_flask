@@ -8,7 +8,7 @@ log = logger.Logger()
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def index() -> str:
     """ Home page """
     log.debug(f"Method: {request.method}")
     if request.method == 'POST':
@@ -21,7 +21,7 @@ def index():
 
 
 @app.route('/helloWorld')
-def hello_world():
+def hello_world() -> str:
     """ Secret helloWorld page """
     log.debug("Found hidden treasure hello world")
     return '<p>Hello, World!</p>'
@@ -37,10 +37,10 @@ def not_found(error) -> tuple[str, int]:
 def get_chuck_norris_joke() -> str:
     """ Get a random Chuck Norris joke with the help of the API https://api.chucknorris.io/ """
     log.debug("Getting Chuck Norris joke")
-    response = requests.get("https://api.chucknorris.io/jokes/random")
+    response = requests.get(url = "https://api.chucknorris.io/jokes/random", stream=True)
     return response.json()["value"]
 
 
 if __name__ == '__main__':
     log.info("Starting application")
-    app.run(host='0.0.0.0', port=8080)
+    app.run()
